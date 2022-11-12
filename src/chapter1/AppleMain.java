@@ -1,11 +1,14 @@
 package chapter1;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+
 public class AppleMain {
+
     public static void main(String[] args) {
         List<Apple> inventory = Arrays.asList(
                 new Apple("green", 80),
@@ -18,10 +21,12 @@ public class AppleMain {
         List<Apple> filterHeavyApples = filterHeavyApples(inventory);
         System.out.println("filterHeavyApples = " + filterHeavyApples);
 
-        List<Apple> filterApplesGreen = filterApples(inventory, Apple::isGreenApple);
+//        List<Apple> filterApplesGreen = filterApples(inventory, Apple::isGreenApple);
+        List<Apple> filterApplesGreen = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println("filterApplesGreen = " + filterApplesGreen);
 
-        List<Apple> filterApplesWeight = filterApples(inventory, Apple::isHeavyApple);
+//        List<Apple> filterApplesWeight = filterApples(inventory, Apple::isHeavyApple);
+        List<Apple> filterApplesWeight = filterApples(inventory, (Apple a) -> a.getWeight() > 150);
         System.out.println("filterApplesWeight = " + filterApplesWeight);
     }
 
@@ -57,5 +62,8 @@ public class AppleMain {
         }
         return result;
     }
+
 }
+
+
 
